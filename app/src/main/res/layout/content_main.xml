@@ -27,8 +27,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="START YOUR ADVENTURE"
-        android:id="@+id/button"
+        android:text="START YOUR ADVENTURE NOW!"
+        android:id="@+id/StartAdventureButton"
         android:layout_below="@+id/TitleImageView"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
