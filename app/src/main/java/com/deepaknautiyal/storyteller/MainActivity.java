@@ -1,5 +1,6 @@
 package com.deepaknautiyal.storyteller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -29,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String name = mNameField.getText().toString();
-                Toast.makeText(MainActivity.this,name,Toast.LENGTH_LONG).show();
+                //Toast.makeText(MainActivity.this,name,Toast.LENGTH_LONG).show();
+                startStory(name);
             }
         };
 
@@ -46,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         }); */
+    }
+
+    private void startStory(String name)
+    {
+        Intent intent = new Intent(this, StoryActivity.class);
+        intent.putExtra("name",name);
+        startActivity(intent);
     }
 
 
