@@ -1,10 +1,12 @@
 package com.deepaknautiyal.storyteller;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
@@ -20,6 +22,7 @@ public class StoryActivity extends AppCompatActivity {
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
      */
     private static final boolean AUTO_HIDE = true;
+    private static final String TAG = StoryActivity.class.getSimpleName();
 
     /**
      * If {@link #AUTO_HIDE} is set, the number of milliseconds to wait after
@@ -112,6 +115,18 @@ public class StoryActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+
+        //Added by Deepak
+        Intent intent = getIntent();
+        String name = intent.getStringExtra(getString(R.string.user_key));
+
+        if(name == null){
+            name = "Default";
+        }
+
+        Log.d(TAG,name);
+
+
     }
 
     @Override
