@@ -1,4 +1,4 @@
-package com.deepaknautiyal.storyteller;
+package com.deepaknautiyal.storyteller.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+
+import com.deepaknautiyal.storyteller.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
