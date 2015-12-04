@@ -59,12 +59,11 @@ public class Page {
         this.mChoice2 = mChoice2;
     }
 
-
-    public boolean ismIsFinal() {
+    public boolean isIsFinal() {
         return mIsFinal;
     }
 
-    public void setmIsFinal(boolean mIsFinal) {
+    public void setIsFinal(boolean mIsFinal) {
         this.mIsFinal = mIsFinal;
     }
 }

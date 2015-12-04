@@ -2,6 +2,7 @@ package com.deepaknautiyal.storyteller.ui;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,8 +12,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.MenuItem;
 import android.support.v4.app.NavUtils;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.deepaknautiyal.storyteller.R;
+import com.deepaknautiyal.storyteller.model.Page;
+import com.deepaknautiyal.storyteller.model.Story;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -31,6 +37,15 @@ public class StoryActivity extends AppCompatActivity {
      * user interaction before hiding the system UI.
      */
     private static final int AUTO_HIDE_DELAY_MILLIS = 3000;
+
+    // Added by Deepak
+    private Story mStory = new Story();
+    private ImageView mImageView;
+    private TextView mTextView;
+    private Button mChoice1;
+    private Button mChoice2;
+    private String mName;
+    private Page mCurrentPage;
 
     /**
      * Some older devices needs a small delay between UI widget updates
@@ -120,14 +135,20 @@ public class StoryActivity extends AppCompatActivity {
 
         //Added by Deepak
         Intent intent = getIntent();
-        String name = intent.getStringExtra(getString(R.string.user_key));
+        mName = intent.getStringExtra(getString(R.string.user_key));
 
-        if(name == null){
-            name = "Default";
+        if(mName == null){
+            mName = "Default";
         }
 
-        Log.d(TAG,name);
+//        Log.d(TAG,mName);
 
+        mImageView = (ImageView)findViewById(R.id.storyImageView);
+        mTextView = (TextView)findViewById(R.id.storyTextView);
+        mChoice1 = (Button)findViewById(R.id.choiceButton1);
+        mChoice2 = (Button)findViewById(R.id.choiceButton2);
+
+        loadPage(0);
 
     }
 
@@ -193,5 +214,35 @@ public class StoryActivity extends AppCompatActivity {
     private void delayedHide(int delayMillis) {
         mHideHandler.removeCallbacks(mHideRunnable);
         mHideHandler.postDelayed(mHideRunnable, delayMillis);
+    }
+
+    private void loadPage(int choice){
+        mCurrentPage = mStory.getPage(0);
+
+        Drawable drawable = getResources().getDrawable(mCurrentPage.getImageId());
+        mImageView.setImageDrawable(drawable);
+
+        String pageText = mCurrentPage.getStoryText();
+        pageText = String.format(pageText, mName);
+        mTextView.setText(pageText);
+
+        mChoice1.setText(mCurrentPage.getChoice1().getChoiceText());
+        mChoice2.setText(mCurrentPage.getChoice2().getChoiceText());
+
+        mChoice1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nextPage = mCurrentPage.getChoice1().getNextPage();
+                loadPage(nextPage);
+            }
+        });
+
+        mChoice2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int nextPage = mCurrentPage.getChoice2().getNextPage();
+                loadPage(nextPage);
+            }
+        });
     }
 }
