@@ -33,7 +33,7 @@ public class Story {
 
         mPages[3] = new Page(
                 R.mipmap.page3,
-                "Your EVA suit is equipped with a headlamp, which you use to navigate the cave. After searching for a while your oxygen levels are starting to get pretty low. You know you should go refill your tank, but there's a very faint light up ahead.",
+                "Your Spacesuit suit is equipped with a headlamp, which you use to navigate the cave. After searching for a while your oxygen levels are starting to get pretty low. You know you should go refill your tank, but there's a very faint light up ahead.",
                 new Choice("Refill at ship and explore the rover", 4),
                 new Choice("Continue towards the faint light", 5));
 
