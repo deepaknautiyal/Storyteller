@@ -27,7 +27,7 @@ public class Story {
 
         mPages[2] = new Page(
                 R.mipmap.page2,
-                "You continue your course to Earth. Two days later, you receive a transmission from HQ saying that they have detected some sort of anomaly on the surface of Mars near an abandoned rover. They ask you to investigate, but ultimately the decision is yours because your mission has already run much longer than planned and supplies are low.",
+                "You continue your course to Earth. Two days later, you receive a transmission from HQ saying that they have detected some sort of anomaly on the surface of Mars near an abandoned rover. They ask you to investigate, but ultimately the decision is yours because your mission has already run much longer than planned and supplies are low",
                 new Choice("Head back to Mars to investigate", 4),
                 new Choice("Continue home to Earth", 6));
 
